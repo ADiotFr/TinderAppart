@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Matched Properties</h2>
+    {% if matched_properties %}
+    <div class="row">
+        {% for property in matched_properties %}
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ property.name }}</h5>
+                    <p class="card-text">{{ property.description|truncatechars:100 }}</p>
+                    <p><strong>Address:</strong> {{ property.address }}</p>
+                    <p><strong>Price:</strong> {{ property.price }}</p>
+                    <p><strong>Bedrooms:</strong> {{ property.bedrooms }}</p>
+                    <p><strong>Bathrooms:</strong> {{ property.bathrooms }}</p>
+                    <a href="{% url 'app1:property_detail' property.pk %}" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No properties found matching your preferences.</p>
+    {% endif %}
+</div>
+{% endblock %}

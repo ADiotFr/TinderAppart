@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Property Detail{% endblock %}
+
+{% block content %}
+    <h1>{{ property.name }}</h1>
+    <p><strong>Address:</strong> {{ property.address }}</p>
+    <p><strong>Price:</strong> {{ property.price }}</p>
+    <p><strong>Bedrooms:</strong> {{ property.bedrooms }}</p>
+    <p><strong>Bathrooms:</strong> {{ property.bathrooms }}</p>
+    <p><strong>Description:</strong> {{ property.description }}</p>
+
+    {% if property.photo %}
+        <img src="{{ property.photo.url }}" alt="{{ property.name }}" class="img-fluid">
+    {% endif %}
+{% endblock %}

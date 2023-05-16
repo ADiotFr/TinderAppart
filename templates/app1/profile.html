@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>My Profile</h1>
+
+    <p>Welcome, {{ user.username }}!</p>
+
+    <h2>My Properties</h2>
+    <ul>
+        {% for property in properties %}
+            <li>
+                <a href="{% url 'app1:property_detail' property.pk %}">{{ property.address }}</a>
+                <a href="{% url 'app1:property_update' property.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                <a href="{% url 'app1:property_delete' property.pk %}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this property?');">Delete</a>
+            </li>
+        {% empty %}
+            <li>You have no properties listed.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>My Tenant Profile</h2>
+    <ul>
+        {% for tenant in tenants %}
+            <li>
+                <a href="{% url 'app1:tenant_detail' tenant.pk %}">{{ tenant.name }}</a>
+                <a href="{% url 'app1:tenant_update' tenant.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                <a href="{% url 'app1:tenant_delete' tenant.pk %}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this tenant?');">Delete</a>
+            </li>
+        {% empty %}
+            <li>You have no tenants listed.</li>
+        {% endfor %}
+  </ul>
+
+    <a href="{% url 'app1:logout' %}" class="btn btn-primary">Logout</a>
+{% endblock %}

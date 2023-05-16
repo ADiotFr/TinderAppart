@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}{{ form.instance.pk|yesno:'Edit Tenant,Add Tenant' }}{% endblock %}
+
+{% block content %}
+    {% if tenant_exists %}
+        <h1>{{ form.instance.pk|yesno:'Edit Tenant, OOPS...' }}</h1>
+        <p>You can only have one tenant profile.</p>
+    {% else %}
+        <h1>{{ form.instance.pk|yesno:'Edit Tenant, Create your Tenant profile' }}</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    {% endif %}
+{% endblock %}
+

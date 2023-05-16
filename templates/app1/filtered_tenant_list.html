@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Filtered Tenants</h2>
+<ul>
+    {% for tenant in tenants %}
+    <li>
+        <a href="{% url 'app1:tenant_detail' tenant.pk %}">{{ tenant.name }}</a>
+    </li>
+    {% empty %}
+    <li>No tenants found.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

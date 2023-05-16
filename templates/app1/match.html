@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Matches</h1>
+    <h2>Your Properties and Matching Tenants</h2>
+    <ul>
+        {% for property, tenant in property_matches %}
+            <li>
+                Your property at {{ property.address }} <b>MATCHES</b> with {{ tenant.name }}.
+                <a href="{% url 'app1:tenant_detail' tenant.pk %}">>>Tenant Details<<</a>
+            </li>
+        {% empty %}
+            <li>No matches found.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Your Tenant Profile and Matching Properties</h2>
+    <ul>
+        {% for property, tenant in tenant_matches %}
+            <li>
+                <b>MATCH</b> with property of {{ property.name }} at {{ property.address }}.
+                <a href="{% url 'app1:property_detail' property.pk %}">>>Property Details<<</a>
+            </li>
+        {% empty %}
+            <li>No matches found.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+

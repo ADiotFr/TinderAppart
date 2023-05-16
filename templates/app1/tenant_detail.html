@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Tenant Detail{% endblock %}
+
+{% block content %}
+    <h1>{{ tenant.name }}</h1>
+    <p><strong>Email:</strong> {{ tenant.email }}</p>
+    <p><strong>Phone:</strong> {{ tenant.phone }}</p>
+    <p><strong>Bio:</strong> {{ tenant.bio }}</p>
+    <p><strong>Bedrooms needed:</strong> {{ tenant.bedrooms }}</p>
+    <p><strong>Bathrooms needed:</strong> {{ tenant.bathrooms }}</p>
+{% endblock %}
