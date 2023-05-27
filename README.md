@@ -2,8 +2,7 @@
 
 ## Introduction
 
-A brief introduction to your project. Describe what your project does and what technologies it uses.
-
+TinderAppart is a web platform built using Django framework that facilitates the matching process between property owners and potential tenants. The platform allows property owners to list their properties and tenants to create profiles and specify their preferences. The goal is to match tenants with suitable properties based on their preferences and property owners' listings.
 ## Requirements
 
 This project requires Python 3.8 (or later) and Django 3.2 (or later). Additional dependencies are listed in the `requirements.txt` file.
