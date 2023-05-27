@@ -1,4 +1,3 @@
-# Create your views here.
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Property, Tenant
 from .forms import PropertyForm, TenantForm, UserRegisterForm
@@ -8,10 +7,12 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 
 
+# Display a list of properties.
 def property_list(request):
-    properties = Property.objects.all()
-    context = {'property': properties}
+    properties = Property.objects.all()  # Fetch all property objects.
+    context = {'property': properties}  # Create a context dictionary.
     return render(request, 'app1/property_list.html', context)
+    # Render the 'property_list.html' template with the given context.
 
 
 def property_detail(request, property_id):
@@ -108,17 +109,20 @@ def home(request):
     return render(request, 'home.html')
 
 
+# Handles user registration.
 def register(request):
     if request.method == 'POST':
-        form = UserRegisterForm(request.POST)
+        form = UserRegisterForm(request.POST)  # Create a UserRegisterForm with POST data.
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
+            form.save()  # Save the valid form data.
+            username = form.cleaned_data.get('username')  # Retrieve the username from the cleaned form data.
             messages.success(request, f'Account created for {username}! You can now log in.')
-            return redirect('login')
+            # Display a success message.
+            return redirect('login')  # Redirect to the login page.
     else:
-        form = UserRegisterForm()
+        form = UserRegisterForm()  # Create a blank UserRegisterForm.
     return render(request, 'app1/register.html', {'form': form})
+    # Render the 'register.html' template with the form in the context.
 
 
 def user_login(request):
@@ -155,14 +159,18 @@ def match(request):
 
     property_matches = []
     for property in properties:
-        matching_tenants = Tenant.objects.filter(budget__gte=property.price, bedrooms__lte=property.bedrooms, bathrooms__lte=property.bathrooms)
+        matching_tenants = Tenant.objects.filter(budget__gte=property.price,
+                                                 bedrooms__lte=property.bedrooms,
+                                                 bathrooms__lte=property.bathrooms)
         for tenant in matching_tenants:
             if tenant.user != property.user:
                 property_matches.append((property, tenant))
 
     tenant_matches = []
     for tenant in tenants:
-        matching_properties = Property.objects.filter(price__lte=tenant.budget, bedrooms__gte=tenant.bedrooms, bathrooms__gte=tenant.bathrooms)
+        matching_properties = Property.objects.filter(price__lte=tenant.budget,
+                                                      bedrooms__gte=tenant.bedrooms,
+                                                      bathrooms__gte=tenant.bathrooms)
         for property in matching_properties:
             if property.user != tenant.user:
                 tenant_matches.append((property, tenant))
