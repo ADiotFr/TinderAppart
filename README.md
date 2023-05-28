@@ -2,7 +2,7 @@
 
 ## Introduction
 
-TinderAppart is a web platform built using Django framework that facilitates the matching process between property owners and potential tenants. The platform allows property owners to list their properties and tenants to create profiles and specify their preferences. The goal is to match tenants with suitable properties based on their preferences and property owners' listings.
+FindAppart is a web platform built using Django framework that facilitates the matching process between property owners and potential tenants. The platform allows property owners to list their properties and tenants to create profiles and specify their preferences. The goal is to match tenants with suitable properties based on their preferences and property owners' listings.
 ## Requirements
 
 This project requires Python 3.8 (or later) and Django 3.2 (or later). Additional dependencies are listed in the `requirements.txt` file.
@@ -11,14 +11,7 @@ This project requires Python 3.8 (or later) and Django 3.2 (or later). Additiona
 
 ### Installation
 
-1. **Clone the repository**  
-   If you have git installed, clone the repository using this command:
-
-    ```shell
-    git clone https://github.com/ADiotFr/TinderAppart.git
-    ```
-
-2. **Create and activate a virtual environment**  
+1. **Create and activate a virtual environment**  
    It is good practice to create a virtual environment for your project to avoid conflicts between dependencies. You can create a virtual environment using the following commands:
   
     ```shell
@@ -31,7 +24,7 @@ This project requires Python 3.8 (or later) and Django 3.2 (or later). Additiona
     env\Scripts\activate     # On Windows
     ```
 
-3. **Install the dependencies**  
+2. **Install the dependencies**  
    Install the project dependencies with pip:
 
     ```shell
